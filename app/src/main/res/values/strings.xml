@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Fluo</string>
+    <string name="mainactivity_email">E-mail</string>
+    <string name="mainactivity_email_hint">Entre com seu E-mail</string>
+    <string name="mainactivity_password">Senha</string>
+    <string name="mainactivity_password_hint">Entre com sua senha</string>
+    <string name="mainactivity_login">Entrar</string>
+    <string name="mainactivity_ops">Ops</string>
+    <string name="mainactivity_ok">Ok</string>
+    <string name="mainactivity_user_pass_invalid">Usuário ou senha inválidos</string>
+    <string name="mainactivity_success">Sucesso</string>
+
+    <string name="mainactivity_register">Cadastre-se</string>
+    <string name="mainactivity_fogot">Esqueci minha senha</string>
+
+</resources>

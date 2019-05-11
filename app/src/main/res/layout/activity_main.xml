@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".ui.activities.MainActivity"
+              android:orientation="vertical"
+android:background="#fff">
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_marginTop="50dp"
+                    android:id="@+id/brand"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/runrun"/>
+
+            <LinearLayout
+                    android:layout_below="@id/brand"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_below="@+id/brand"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mainactivity_email"
+                        android:textSize="16sp"/>
+
+                <EditText
+                        android:id="@+id/email"
+                        android:layout_marginHorizontal="20dp"
+                        android:hint="@string/mainactivity_email_hint"
+                        android:layout_width="match_parent"
+                        android:inputType="textEmailAddress"
+                        android:layout_height="50dp"/>
+
+                <TextView
+                        android:id="@+id/passtitle"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mainactivity_password"
+                        android:textSize="16sp"/>
+
+                <EditText
+                        android:id="@+id/password"
+                        android:inputType="textPassword"
+                        android:layout_marginHorizontal="20dp"
+                        android:hint="@string/mainactivity_password_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+
+                <Button
+                        android:id="@+id/login"
+                        android:layout_marginHorizontal="20dp"
+                        android:text="@string/mainactivity_login"
+                        android:textAllCaps="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+
+                <Button
+                        android:id="@+id/forgot"
+                        android:layout_marginHorizontal="20dp"
+                        android:text="@string/mainactivity_fogot"
+                        android:textAllCaps="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+
+                <Button
+                        android:layout_marginBottom="50dp"
+                        android:id="@+id/register"
+                        android:layout_marginHorizontal="20dp"
+                        android:text="@string/mainactivity_register"
+                        android:textAllCaps="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>
