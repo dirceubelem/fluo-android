@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <com.loopeer.shadow.ShadowView
+            android:layout_marginTop="14dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            app:cornerRadius="6dp"
+            app:shadowMargin="6dp"
+            app:shadowRadius="6dp">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+
+            <View android:layout_width="4dp"
+                  android:background="@drawable/background_yellow_task"
+                  android:layout_height="match_parent"/>
+
+            <ImageButton
+                    android:layout_marginLeft="4dp"
+                    android:id="@+id/check"
+                    android:src="@drawable/circle"
+                    android:layout_width="44dp"
+                    android:background="@color/transparent"
+                    android:layout_height="match_parent"/>
+
+            <TextView
+                    android:id="@+id/datetime"
+                    android:layout_toRightOf="@id/check"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/robotolight"
+                    android:textSize="11sp"
+                    android:text="11:00 PM"
+                    android:layout_height="wrap_content"/>
+
+
+            <TextView
+                    android:id="@+id/name"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_toRightOf="@+id/datetime"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/robotomedium"
+                    android:textColor="@color/textbrand"
+                    android:textSize="14sp"
+                    android:text="Task Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="11dp"
+                    android:src="@drawable/bell"/>
+
+        </RelativeLayout>
+
+    </com.loopeer.shadow.ShadowView>
+
+</LinearLayout>

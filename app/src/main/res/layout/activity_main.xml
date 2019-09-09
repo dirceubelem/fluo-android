@@ -1,93 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              tools:context=".ui.activities.MainActivity"
-              android:orientation="vertical"
-android:background="#fff">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activities.MainActivity">
 
-    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="106dp"
+            android:background="@drawable/header">
+
+        <!--<ProgressBar-->
+        <!--android:id="@+id/progressAvatar"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:progress="100"-->
+        <!--style="?android:progressBarStyleHorizontal"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:progressDrawable="@drawable/progresscircle"-->
+        <!--/>-->
+
+        <TextView
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/robotomedium"
+                android:textSize="19sp"
+                android:id="@+id/userWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/howManyTasks"
+                android:layout_below="@id/userWelcome"
+                android:layout_marginLeft="18dp"
+                android:fontFamily="@font/robotolight"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:clickable="true"
+                android:id="@+id/avatar"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="18dp"
+                android:layout_marginBottom="11dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+            android:layout_below="@id/header"
+            android:layout_above="@id/menu"
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
+
+
+    <RelativeLayout
+            android:id="@+id/menu"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
 
         <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="40dp"
+                android:clickable="true"
+                android:layout_width="50dp"
                 android:layout_height="match_parent">
 
-            <ImageView
-                    android:layout_marginTop="50dp"
-                    android:id="@+id/brand"
+            <ImageButton
+                    android:id="@+id/btnhome"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/home"
+                    android:background="@color/white"/>
+
+            <TextView
+                    android:layout_below="@id/btnhome"
+                    android:id="@+id/hometext"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/robotomedium"
                     android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/runrun"/>
+                    android:textColor="@color/textmenu"
+                    android:text="@string/menuhome"/>
 
-            <LinearLayout
-                    android:layout_below="@id/brand"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
-                <TextView
-                        android:layout_below="@+id/brand"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/mainactivity_email"
-                        android:textSize="16sp"/>
-
-                <EditText
-                        android:id="@+id/email"
-                        android:layout_marginHorizontal="20dp"
-                        android:hint="@string/mainactivity_email_hint"
-                        android:layout_width="match_parent"
-                        android:inputType="textEmailAddress"
-                        android:layout_height="50dp"/>
-
-                <TextView
-                        android:id="@+id/passtitle"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/mainactivity_password"
-                        android:textSize="16sp"/>
-
-                <EditText
-                        android:id="@+id/password"
-                        android:inputType="textPassword"
-                        android:layout_marginHorizontal="20dp"
-                        android:hint="@string/mainactivity_password_hint"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"/>
-
-                <Button
-                        android:id="@+id/login"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="@string/mainactivity_login"
-                        android:textAllCaps="false"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"/>
-
-                <Button
-                        android:id="@+id/forgot"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="@string/mainactivity_fogot"
-                        android:textAllCaps="false"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"/>
-
-                <Button
-                        android:layout_marginBottom="50dp"
-                        android:id="@+id/register"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="@string/mainactivity_register"
-                        android:textAllCaps="false"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"/>
-
-            </LinearLayout>
         </RelativeLayout>
 
-    </ScrollView>
-</LinearLayout>
+        <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                android:layout_width="50dp"
+                android:layout_height="match_parent">
+
+            <ImageButton
+                    android:id="@+id/btntask"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/taskinactive"
+                    android:background="@color/white"/>
+
+            <TextView
+                    android:layout_below="@id/btntask"
+                    android:id="@+id/tasktext"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/robotomedium"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textmenuinactive"
+                    android:text="@string/menuprojects"/>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ImageButton
+            android:id="@+id/btnaddtask"
+            android:background="@color/transparent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/addtask"/>
+
+</RelativeLayout>

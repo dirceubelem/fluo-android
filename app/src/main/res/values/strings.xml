@@ -1,16 +1,58 @@
 <resources>
     <string name="app_name">Fluo</string>
-    <string name="mainactivity_email">E-mail</string>
-    <string name="mainactivity_email_hint">Entre com seu E-mail</string>
-    <string name="mainactivity_password">Senha</string>
-    <string name="mainactivity_password_hint">Entre com sua senha</string>
-    <string name="mainactivity_login">Entrar</string>
-    <string name="mainactivity_ops">Ops</string>
-    <string name="mainactivity_ok">Ok</string>
-    <string name="mainactivity_user_pass_invalid">Usuário ou senha inválidos</string>
-    <string name="mainactivity_success">Sucesso</string>
+    <string name="welcome">Bem Vindo ao Fluo</string>
+    <string name="register_title">Crie sua conta</string>
+    <string name="name">Nome</string>
+    <string name="email">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="signup">Cadastre-se</string>
+    <string name="register_signup">Cadastrar</string>
+    <string name="login">Entrar</string>
+    <string name="ops">Ops</string>
+    <string name="invalid_user_and_pass">Usuário ou senha inválidos</string>
+    <string name="ok">Ok</string>
 
-    <string name="mainactivity_register">Cadastre-se</string>
-    <string name="mainactivity_fogot">Esqueci minha senha</string>
+    <string name="menuhome">Home</string>
+    <string name="menuprojects">Projetos</string>
+
+    <string name="emptytask">Nenhuma tarefa</string>
+    <string name="emptytasksubtitle">Você não tem nenhuma tarefa pra fazer</string>
+
+    <string name="textwelcome">Olá %s!</string>
+    <string name="textnotasks">Você não tem nenhuma tarefa</string>
+    <string name="textonetasks">Você tem uma tarefa</string>
+    <string name="textanytasks">Você tem %s tarefas</string>
+
+    <string name="forgot_password">Esqueci minha senha</string>
+    <string name="forgot_title">Esqueci minha senha</string>
+    <string name="forgot_send">Enviar nova senha</string>
+
+    <string name="success">Sucesso</string>
+    <string name="register_duplicate">Usuário já existe!</string>
+    <string name="register_success">Usuário cadastrado com sucesso!</string>
+
+    <string name="forgot_message">Você receberá um e-mail com a sua nova senha.</string>
+
+    <string name="project_tasks">%s tarefas</string>
+    <string name="project_task">%s tarefa</string>
+    <string name="project_notask">Nenhuma tarefa</string>
+
+    <string name="confirm">Confirmação</string>
+    <string name="delete_task">Tem certeza que deseja excluir esta tarefa?</string>
+    <string name="confirm_yes">Sim</string>
+    <string name="confirm_no">Não</string>
+
+    <string name="confirm_exit">Tem certeza que deseja sair do Fluo?</string>
+
+    <string name="select_menu">Selecione</string>
+    <string name="select_camera">Tirar uma foto</string>
+    <string name="select_gallery">Galeria de fotos</string>
+    <string name="select_exit">Sair do Fluo</string>
+
+    <string name="addtask_addnewtask">Adicionar nova tarefa</string>
+    <string name="addtask_addtask">Adicionar tarefa</string>
+    <string name="addtask_title">Título</string>
+    <string name="addtask_description">Descrição</string>
+    <string name="addtask_selectdate">Selecione a data de entrega</string>
 
 </resources>
