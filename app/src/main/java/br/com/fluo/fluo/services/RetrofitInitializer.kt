@@ -45,4 +45,8 @@ class RetrofitInitializer {
         return retrofit.create(ServiceProject::class.java)
     }
 
+    fun serviceTask(): ServiceTask {
+        return retrofit.create(ServiceTask::class.java)
+    }
+
 }
