@@ -10,7 +10,12 @@ import br.com.fluo.fluo.R
 import br.com.fluo.fluo.models.Project
 import kotlinx.android.synthetic.main.item_horizontal_project.view.*
 
-class HorizontalProjectsAdapter(var context: Context, var list: List<Project>) :
+class HorizontalProjectsAdapter(
+    var context: Context,
+    var list: List<Project>,
+    var selected: Int,
+    var listener: ProjectViewHolderListener
+) :
     RecyclerView.Adapter<HorizontalProjectsAdapter.ProjectViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ProjectViewHolder {
@@ -23,26 +28,34 @@ class HorizontalProjectsAdapter(var context: Context, var list: List<Project>) :
     }
 
     override fun onBindViewHolder(p0: ProjectViewHolder, p1: Int) {
-        p0.bind(context, list[p1], p1)
+        p0.bind(context, list[p1], p1, selected, listener)
     }
 
     class ProjectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var name = itemView.name as Button
 
-        fun bind(context: Context, item: Project, position: Int) {
+        fun bind(context: Context, item: Project, position: Int, selected: Int, listener: ProjectViewHolderListener) {
 
             name.text = item.name
 
-            name.setOnClickListener {
-
+            if (position == selected) {
                 name.background = context.resources.getDrawable(R.drawable.buttongreensolid, null)
                 name.setTextColor(context.resources.getColor(R.color.white, null))
+            }
 
+            name.setOnClickListener {
+                listener?.let {
+                    it.selectedItem(item, position)
+                }
             }
 
         }
 
+    }
+
+    interface ProjectViewHolderListener {
+        fun selectedItem(project: Project, selected: Int)
     }
 
 }

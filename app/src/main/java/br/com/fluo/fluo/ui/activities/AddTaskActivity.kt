@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_add_task.*
 import retrofit2.Call
 import retrofit2.Response
 
-class AddTaskActivity : AppCompatActivity() {
+class AddTaskActivity : AppCompatActivity(), HorizontalProjectsAdapter.ProjectViewHolderListener {
 
     lateinit var adapter: HorizontalProjectsAdapter
     lateinit var listprojects: List<Project>
@@ -19,9 +19,7 @@ class AddTaskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_task)
-
         getProjects()
-
         closetask.setOnClickListener {
             finish()
         }
@@ -46,7 +44,7 @@ class AddTaskActivity : AppCompatActivity() {
                             LinearLayoutManager(this@AddTaskActivity, LinearLayoutManager.HORIZONTAL, false)
                         projects.layoutManager = layoutManager
 
-                        adapter = HorizontalProjectsAdapter(this@AddTaskActivity, listprojects)
+                        adapter = HorizontalProjectsAdapter(this@AddTaskActivity, listprojects, -1, this@AddTaskActivity)
 
                         projects.adapter = adapter
 
@@ -64,4 +62,10 @@ class AddTaskActivity : AppCompatActivity() {
 
     }
 
+    override fun selectedItem(project: Project, selected: Int) {
+
+        projects.adapter = HorizontalProjectsAdapter(this, listprojects, selected, this)
+        projects.scrollToPosition(selected)
+
+    }
 }
