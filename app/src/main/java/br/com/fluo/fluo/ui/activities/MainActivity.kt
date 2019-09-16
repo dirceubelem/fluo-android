@@ -1,6 +1,7 @@
 package br.com.fluo.fluo.ui.activities
 
 import android.Manifest
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -18,6 +19,7 @@ import br.com.fluo.fluo.helper.DateTime
 import br.com.fluo.fluo.helper.ImageHelper
 import br.com.fluo.fluo.helper.SDCardUtils
 import br.com.fluo.fluo.helper.SharedPreferencesHelper
+import br.com.fluo.fluo.helper.db.DBHelper
 import br.com.fluo.fluo.models.Account
 import br.com.fluo.fluo.services.RetrofitInitializer
 import br.com.fluo.fluo.ui.dialogs.AddTaskDialog
@@ -36,7 +38,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import java.io.IOException
@@ -81,6 +85,27 @@ class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
 
     }
 
+    fun getDatabase() {
+
+        val s = RetrofitInitializer().serviceDatabase()
+
+        val call = s.getDatabase()
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                try {
+                    DBHelper.salvarBanco(this@MainActivity, response.body().byteStream())
+                } catch (e: Exception) {
+                    Log.e("Baixando banco", e.message)
+                }
+
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+
+            }
+        })
+    }
+
     fun photoClick(image: ImageView, type: Int) {
         this.type = type
         imageViewChangeReference = image
@@ -122,6 +147,7 @@ class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
         val pictureDialogItems = arrayOf(
             getString(R.string.select_camera),
             getString(R.string.select_gallery),
+            getString(R.string.get_database),
             getString(R.string.select_exit)
         )
 
@@ -130,7 +156,8 @@ class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
             when (which) {
                 0 -> takePhotoFromCamera()
                 1 -> choosePhotoFromGalery()
-                2 -> exitFluo()
+                2 -> getDatabase()
+                3 -> exitFluo()
             }
 
         }
@@ -143,7 +170,8 @@ class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
 
         val image = DateTime.now().toString("yyyyMMddHHmmss")
 
-        val file = SDCardUtils.getSdCardFile(this, FluoApp.Directories.IMAGES, image + FluoApp.TYPE_IMAGE)
+        val file =
+            SDCardUtils.getSdCardFile(this, FluoApp.Directories.IMAGES, image + FluoApp.TYPE_IMAGE)
 
         pictureFile = file.absolutePath
 
@@ -289,7 +317,8 @@ class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
 
     fun exitFluo() {
 
-        MaterialDialog.Builder(this).theme(Theme.LIGHT).title(R.string.confirm).content(R.string.confirm_exit)
+        MaterialDialog.Builder(this).theme(Theme.LIGHT).title(R.string.confirm)
+            .content(R.string.confirm_exit)
             .positiveText(R.string.confirm_yes).onPositive { dialog, which ->
 
                 SharedPreferencesHelper.delete(this, "account", "userData")
