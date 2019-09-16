@@ -43,7 +43,7 @@ class FluoApp : Application {
                 + DATABASE_NAME)
         val DATABASE_PATH_TEMP = "/data/data/br.com.fluo.fluo/temp"
         val CURRENT_REVISION = 2
-        val PATH_APP_TEMP = "/sdcard/fluo/fluo/data/"
+        val PATH_APP_TEMP = "/sdcard/fluo/"
         val DATABASE_NAME_TEMP = "task.zip"
         val PATH_APP = "/sdcard/fluo/"
         val ASSETS_DATABASE_PATH = "db"

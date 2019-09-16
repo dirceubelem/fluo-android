@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         if (BuildConfig.DEBUG) {
 
             email.setText("dirceu@fourtime.com")
-            password.setText("senha123")
+            password.setText("mamamia")
 
         }
 
