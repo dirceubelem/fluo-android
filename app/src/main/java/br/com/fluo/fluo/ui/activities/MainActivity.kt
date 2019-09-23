@@ -14,13 +14,13 @@ import android.util.Log
 import android.widget.ImageView
 import br.com.fluo.fluo.R
 import br.com.fluo.fluo.app.FluoApp
-import br.com.fluo.fluo.database.fw.BOFactory
+import br.com.fluo.fluo.database.fw.DAOBase
 import br.com.fluo.fluo.database.model.TOTask
 import br.com.fluo.fluo.helper.DateTime
 import br.com.fluo.fluo.helper.ImageHelper
 import br.com.fluo.fluo.helper.SDCardUtils
 import br.com.fluo.fluo.helper.SharedPreferencesHelper
-import br.com.fluo.fluo.helper.db.DBHelper
+import br.com.fluo.fluo.database.fw.DBHelper
 import br.com.fluo.fluo.models.Account
 import br.com.fluo.fluo.services.RetrofitInitializer
 import br.com.fluo.fluo.ui.dialogs.NewTaskDialog
@@ -79,7 +79,6 @@ class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
             var i = Intent(this, AddTaskActivity::class.java)
             startActivity(i)
 
-//            AddTaskDialog.getDialog().show(supportFragmentManager, "")
         }
 
         teste()
@@ -88,11 +87,19 @@ class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
 
     fun teste() {
 
-//        var list = DAOTask.list(this)
-//        Log.i("xxx", "" + list.size)
-
-        var list = BOFactory.list(this, TOTask(), "name")
+        var list = DAOBase.list(this, TOTask(), "name")
         Log.i("xxx", "" + list.size)
+
+        var t = TOTask()
+        t.id = DateTime.now().toString("yyyyMMddHHmmss")
+        t.createdAt = DateTime.now().millis.toFloat()
+        t.name = "xxx"
+        t.description = "teste"
+        t.idProject = DateTime.now().toString("yyyyMMddHHmmss")
+        t.priority = 1f
+        t.tags = "tags"
+
+        DAOBase.insert(this, t)
 
     }
 

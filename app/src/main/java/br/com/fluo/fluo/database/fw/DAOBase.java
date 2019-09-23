@@ -10,8 +10,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.fluo.fluo.helper.db.DBHelper;
-
 public class DAOBase extends DBHelper {
 
     private SQLiteDatabase db = null;
@@ -175,7 +173,6 @@ public class DAOBase extends DBHelper {
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
-//                t.load(cursor);
                 t.loadManual(cursor);
                 l.add(t);
             }

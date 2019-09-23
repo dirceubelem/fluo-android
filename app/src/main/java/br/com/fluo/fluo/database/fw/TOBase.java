@@ -49,7 +49,6 @@ public class TOBase {
     }
 
     public void loadManual(Cursor cursor) throws Exception {
-
     }
 
     public String getString() {
