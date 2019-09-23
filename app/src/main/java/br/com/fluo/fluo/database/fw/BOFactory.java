@@ -3,17 +3,13 @@ package br.com.fluo.fluo.database.fw;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.List;
+
 public class BOFactory {
 
     public static TOBase get(Context c, TOBase to) {
         try {
-            DAOBase b = null;
-            try {
-                b = new DAOBase(c);
-                return b.get(to);
-            } finally {
-                b.close();
-            }
+            return DAOBase.get(c, to);
         } catch (Exception e) {
             Log.e("App", e.getMessage());
             return null;
@@ -22,9 +18,7 @@ public class BOFactory {
 
     public static void insert(Context c, TOBase to) {
         try {
-            DAOBase b = new DAOBase(c);
-            b.insert(to);
-            b.close();
+            DAOBase.insert(c, to);
         } catch (Exception e) {
             Log.e("App", e.getMessage());
         }
@@ -33,9 +27,7 @@ public class BOFactory {
 
     public static void update(Context c, TOBase to) {
         try {
-            DAOBase b = new DAOBase(c);
-            b.update(to);
-            b.close();
+            DAOBase.update(c, to);
         } catch (Exception e) {
             Log.e("App", e.getMessage());
         }
@@ -43,19 +35,24 @@ public class BOFactory {
 
     public static void deleteAll(Context c, TOBase to) {
         try {
-            DAOBase b = new DAOBase(c);
-            b.deleteAll(to);
-            b.close();
+            DAOBase.deleteAll(c, to);
         } catch (Exception e) {
             Log.e("App", e.getMessage());
         }
     }
 
+    public static List<TOBase> list(Context c, TOBase to, String order) {
+        try {
+            return DAOBase.list(c, to, order);
+        } catch (Exception e) {
+            Log.e("App", e.getMessage());
+            return null;
+        }
+    }
+
     public static void delete(Context c, TOBase to) {
         try {
-            DAOBase b = new DAOBase(c);
-            b.delete(to);
-            b.close();
+            DAOBase.delete(c, to);
         } catch (Exception e) {
             Log.e("App", e.getMessage());
         }

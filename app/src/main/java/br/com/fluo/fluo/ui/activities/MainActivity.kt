@@ -14,9 +14,7 @@ import android.util.Log
 import android.widget.ImageView
 import br.com.fluo.fluo.R
 import br.com.fluo.fluo.app.FluoApp
-import br.com.fluo.fluo.database.dao.DAOTask
 import br.com.fluo.fluo.database.fw.BOFactory
-import br.com.fluo.fluo.database.fw.DAOBase
 import br.com.fluo.fluo.database.model.TOTask
 import br.com.fluo.fluo.helper.DateTime
 import br.com.fluo.fluo.helper.ImageHelper
@@ -90,7 +88,10 @@ class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
 
     fun teste() {
 
-        var list = DAOTask.list(this)
+//        var list = DAOTask.list(this)
+//        Log.i("xxx", "" + list.size)
+
+        var list = BOFactory.list(this, TOTask(), "name")
         Log.i("xxx", "" + list.size)
 
     }

@@ -20,23 +20,29 @@ public class DAOBase extends DBHelper {
         super(context);
     }
 
-    public void insert(TOBase t) throws Exception {
+    public static void insert(Context context, TOBase t) throws Exception {
 
-        if (db == null) {
-            db = this.getWritableDatabase();
+        DAOBase d = new DAOBase(context);
+
+        if (d.db == null) {
+            d.db = d.getWritableDatabase();
         }
 
         ContentValues values = Helper.createContentValuesComChave(t);
 
         String tabela = Helper.obterNomeTabela(t);
 
-        db.insert(tabela, null, values);
+        d.db.insert(tabela, null, values);
+
+        d.close();
     }
 
-    public long update(TOBase t) throws Exception {
+    public static long update(Context context, TOBase t) throws Exception {
 
-        if (db == null) {
-            db = this.getWritableDatabase();
+        DAOBase d = new DAOBase(context);
+
+        if (d.db == null) {
+            d.db = d.getWritableDatabase();
         }
 
         ContentValues values = Helper.createContentValuesSemChave(t);
@@ -64,18 +70,22 @@ public class DAOBase extends DBHelper {
 
         String tabela = Helper.obterNomeTabela(t);
 
-        long x = db.update(tabela, values, where, vs);
+        long x = d.db.update(tabela, values, where, vs);
 
         Log.i("Update:", "Total " + x);
+
+        d.close();
 
         return x;
     }
 
 
-    public TOBase get(TOBase t) throws Exception {
+    public static TOBase get(Context context, TOBase t) throws Exception {
 
-        if (db == null) {
-            db = this.getWritableDatabase();
+        DAOBase d = new DAOBase(context);
+
+        if (d.db == null) {
+            d.db = d.getWritableDatabase();
         }
 
         String tabela = Helper.obterNomeTabela(t);
@@ -101,7 +111,7 @@ public class DAOBase extends DBHelper {
 
         }
 
-        Cursor cursor = db.query(tabela, // a. table
+        Cursor cursor = d.db.query(tabela, // a. table
                 t.getColumns().split(","), // b. column names
                 where, // c. selections
                 vs, // d. selections args
@@ -116,15 +126,19 @@ public class DAOBase extends DBHelper {
             }
         }
 
+        d.close();
+
         return t;
     }
 
-    public List<TOBase> list(TOBase t) throws Exception {
+    public static List<TOBase> list(Context context, TOBase t, String order) throws Exception {
 
         List<TOBase> l = new ArrayList<>();
 
-        if (db == null) {
-            db = this.getWritableDatabase();
+        DAOBase d = new DAOBase(context);
+
+        if (d.db == null) {
+            d.db = d.getWritableDatabase();
         }
 
         String tabela = Helper.obterNomeTabela(t);
@@ -150,38 +164,48 @@ public class DAOBase extends DBHelper {
 
         }
 
-        Cursor cursor = db.query(tabela, // a. table
+        Cursor cursor = d.db.query(tabela, // a. table
                 t.getColumns().split(","), // b. column names
                 where, // c. selections
                 vs, // d. selections args
                 null, // e. group by
                 null, // f. having
-                null, // g. order by
+                order, // g. order by
                 null); // h. limit
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                t.load(cursor);
+//                t.load(cursor);
+                t.loadManual(cursor);
                 l.add(t);
             }
         }
 
+        d.close();
+
         return l;
     }
 
-    public void deleteAll(TOBase t) throws Exception {
-        if (db == null) {
-            db = this.getWritableDatabase();
+    public static void deleteAll(Context context, TOBase t) throws Exception {
+        DAOBase d = new DAOBase(context);
+
+        if (d.db == null) {
+            d.db = d.getWritableDatabase();
         }
 
-        long x = db.delete(t.getTableName(), null, null);
+        long x = d.db.delete(t.getTableName(), null, null);
 
         Log.i("App", "Total: " + x);
+
+        d.close();
     }
 
-    public void delete(TOBase t) throws Exception {
-        if (db == null) {
-            db = this.getWritableDatabase();
+    public static void delete(Context context, TOBase t) throws Exception {
+
+        DAOBase d = new DAOBase(context);
+
+        if (d.db == null) {
+            d.db = d.getWritableDatabase();
         }
 
         List<Field> colunasChave = Helper.obterColunasChave(t);
@@ -205,9 +229,11 @@ public class DAOBase extends DBHelper {
 
         }
 
-        long x = db.delete(t.getTableName(), where, vs);
+        long x = d.db.delete(t.getTableName(), where, vs);
 
         Log.i("App", "Total: " + x);
+
+        d.close();
     }
 
 }

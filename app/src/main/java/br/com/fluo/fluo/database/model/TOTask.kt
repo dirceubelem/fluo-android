@@ -1,5 +1,6 @@
 package br.com.fluo.fluo.database.model
 
+import android.database.Cursor
 import br.com.fluo.fluo.database.fw.Column
 import br.com.fluo.fluo.database.fw.TOBase
 import br.com.fluo.fluo.database.fw.Table
@@ -30,5 +31,18 @@ class TOTask : TOBase() {
 
     @Column(name = "priority", jsonName = "priority")
     var priority: Float? = null
+
+    override fun loadManual(cursor: Cursor) {
+
+        id = cursor.getString(0)
+        name = cursor.getString(1)
+        idProject = cursor.getString(2)
+        idAccountTo = cursor.getString(3)
+        description = cursor.getString(4)
+        tags = cursor.getString(5)
+        createdAt = cursor.getFloat(6)
+        priority = cursor.getFloat(7)
+
+    }
 
 }
