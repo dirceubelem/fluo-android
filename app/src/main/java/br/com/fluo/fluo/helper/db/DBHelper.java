@@ -58,8 +58,6 @@ public class DBHelper extends SQLiteOpenHelper {
         File f = new File(FluoApp.Companion.getDATABASE_PATH());
         boolean x = f.mkdirs();
 
-        Log.i("xxx", "xxx" + x);
-
         OutputStream out = new FileOutputStream(
                 FluoApp.Companion.getABSOLUTE_DATABASE_PATH());
 

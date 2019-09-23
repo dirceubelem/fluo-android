@@ -41,9 +41,6 @@ public class ZipHelper {
                 int count;
                 byte data[] = new byte[BUFFER];
 
-//                File file = new File(location, entryName.substring(0, entryName.lastIndexOf('/')));
-//                file.mkdirs();
-
                 FileOutputStream fos = new FileOutputStream(location
                         + (!bar ? "/" : "") + entryName);
 

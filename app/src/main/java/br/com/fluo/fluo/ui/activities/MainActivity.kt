@@ -1,7 +1,6 @@
 package br.com.fluo.fluo.ui.activities
 
 import android.Manifest
-import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -22,7 +21,6 @@ import br.com.fluo.fluo.helper.SharedPreferencesHelper
 import br.com.fluo.fluo.helper.db.DBHelper
 import br.com.fluo.fluo.models.Account
 import br.com.fluo.fluo.services.RetrofitInitializer
-import br.com.fluo.fluo.ui.dialogs.AddTaskDialog
 import br.com.fluo.fluo.ui.dialogs.NewTaskDialog
 import br.com.fluo.fluo.ui.fragments.ProjectsFragment
 import com.afollestad.materialdialogs.MaterialDialog
@@ -44,7 +42,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import java.io.IOException
-import java.util.*
 
 
 class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
