@@ -14,6 +14,10 @@ import android.util.Log
 import android.widget.ImageView
 import br.com.fluo.fluo.R
 import br.com.fluo.fluo.app.FluoApp
+import br.com.fluo.fluo.database.dao.DAOTask
+import br.com.fluo.fluo.database.fw.BOFactory
+import br.com.fluo.fluo.database.fw.DAOBase
+import br.com.fluo.fluo.database.model.TOTask
 import br.com.fluo.fluo.helper.DateTime
 import br.com.fluo.fluo.helper.ImageHelper
 import br.com.fluo.fluo.helper.SDCardUtils
@@ -79,6 +83,15 @@ class MainActivity : AppCompatActivity(), NewTaskDialog.NewTaskDialogListener {
 
 //            AddTaskDialog.getDialog().show(supportFragmentManager, "")
         }
+
+        teste()
+
+    }
+
+    fun teste() {
+
+        var list = DAOTask.list(this)
+        Log.i("xxx", "" + list.size)
 
     }
 
