@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="br.com.fluo.fluo">
+        package="br.com.fluo.fluo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.media.action.IMAGE_CAPTURE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.media.action.IMAGE_CAPTURE" />
 
     <application
             android:name=".app.FluoApp"
@@ -16,10 +16,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.AddTaskActivity"
-                  android:theme="@style/AppTheme.Transparent"
-                  android:screenOrientation="portrait">
+        <activity android:name=".ui.activities.TesteActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+                android:name=".ui.activities.AddTaskActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.Transparent"></activity>
 
         <provider
                 android:name="android.support.v4.content.FileProvider"
@@ -28,36 +35,28 @@
                 android:grantUriPermissions="true">
             <meta-data
                     android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/file_paths"/>
+                    android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ui.activities.ForgotActivity">
-        </activity>
+        <activity android:name=".ui.activities.ForgotActivity"></activity>
         <activity
                 android:name=".ui.activities.RegisterActivity"
                 android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.FullScreen">
-        </activity>
+                android:theme="@style/AppTheme.FullScreen"></activity>
         <activity
                 android:name=".ui.activities.LoginActivity"
                 android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.FullScreen">
-        </activity>
+                android:theme="@style/AppTheme.FullScreen"></activity>
         <activity
                 android:name=".ui.activities.SplashActivity"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.FullScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".ui.activities.MainActivity"
                 android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.FullScreen">
-        </activity>
+                android:theme="@style/AppTheme.FullScreen"></activity>
     </application>
 
 </manifest>
